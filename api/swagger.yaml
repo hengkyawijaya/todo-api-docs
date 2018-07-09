@@ -8,6 +8,25 @@ host: "todo-api-gateway.apps.playcourt.id"
 schemes:
 - "http"
 paths:
+  /auth/login:
+    post:
+      tags:
+      - "Auth"
+      summary: "Creates a new user."
+      operationId: "authLoginPOST"
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "data"
+        description: "The user to create."
+        required: false
+        schema:
+          $ref: "#/definitions/data"
+      responses:
+        200:
+          description: "OK"
+      x-swagger-router-controller: "Auth"
   /users/create:
     post:
       tags:
@@ -22,7 +41,7 @@ paths:
         description: "The user to create."
         required: false
         schema:
-          $ref: "#/definitions/data"
+          $ref: "#/definitions/data_1"
       responses:
         200:
           description: "OK"
@@ -118,7 +137,7 @@ paths:
         description: "The user to create."
         required: false
         schema:
-          $ref: "#/definitions/data_1"
+          $ref: "#/definitions/data_2"
       responses:
         200:
           description: "OK"
@@ -168,7 +187,7 @@ paths:
         description: "The post to create."
         required: false
         schema:
-          $ref: "#/definitions/data_2"
+          $ref: "#/definitions/data_3"
       responses:
         200:
           description: "OK"
@@ -270,7 +289,7 @@ paths:
         description: "The post to create."
         required: false
         schema:
-          $ref: "#/definitions/data_3"
+          $ref: "#/definitions/data_4"
       responses:
         200:
           description: "OK"
@@ -320,7 +339,7 @@ paths:
         description: "The comment to create."
         required: false
         schema:
-          $ref: "#/definitions/data_4"
+          $ref: "#/definitions/data_5"
       responses:
         200:
           description: "OK"
@@ -422,7 +441,7 @@ paths:
         description: "The comment to create."
         required: false
         schema:
-          $ref: "#/definitions/data_5"
+          $ref: "#/definitions/data_6"
       responses:
         200:
           description: "OK"
@@ -517,10 +536,8 @@ definitions:
         type: "string"
       succeeded:
         type: "boolean"
-  userscreate_user:
+  authlogin_user:
     properties:
-      name:
-        type: "string"
       email:
         type: "string"
       password:
@@ -529,8 +546,21 @@ definitions:
     type: "object"
     properties:
       user:
-        $ref: "#/definitions/userscreate_user"
+        $ref: "#/definitions/authlogin_user"
+  userscreate_user:
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
   data_1:
+    type: "object"
+    properties:
+      user:
+        $ref: "#/definitions/userscreate_user"
+  data_2:
     type: "object"
     properties:
       user:
@@ -541,11 +571,6 @@ definitions:
         type: "string"
       content:
         type: "string"
-  data_2:
-    type: "object"
-    properties:
-      post:
-        $ref: "#/definitions/postscreate_post"
   data_3:
     type: "object"
     properties:
@@ -554,9 +579,14 @@ definitions:
   data_4:
     type: "object"
     properties:
-      comment:
+      post:
         $ref: "#/definitions/postscreate_post"
   data_5:
+    type: "object"
+    properties:
+      comment:
+        $ref: "#/definitions/postscreate_post"
+  data_6:
     type: "object"
     properties:
       comment:
