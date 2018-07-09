@@ -4,7 +4,6 @@
   "description": "API description in Markdown.",
   "main": "index.js",
   "scripts": {
-	"prestart": "npm install",
 	"start": "node index.js"
   },
   "keywords": [
