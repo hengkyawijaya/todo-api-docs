@@ -12,7 +12,7 @@ paths:
     post:
       tags:
       - "Auth"
-      summary: "Login user."
+      summary: "login user"
       operationId: "authLoginPOST"
       consumes:
       - "application/json"
@@ -567,8 +567,6 @@ definitions:
         $ref: "#/definitions/userscreate_user"
   postscreate_post:
     properties:
-      user:
-        type: "string"
       content:
         type: "string"
   data_3:
