@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "API description in Markdown."
   version: "1.0.0"
-  title: "Sample API"
+  title: "TODO API"
 host: "todo-api-gateway.apps.playcourt.id"
 schemes:
 - "http"
@@ -12,7 +12,7 @@ paths:
     post:
       tags:
       - "Auth"
-      summary: "Creates a new user."
+      summary: "Login user."
       operationId: "authLoginPOST"
       consumes:
       - "application/json"
